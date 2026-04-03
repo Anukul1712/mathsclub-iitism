@@ -1,0 +1,164 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600&family=Playfair+Display:ital,wght@0,400;0,500;0,700;0,900;1,400;1,700&family=DM+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400;500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --navy-950: #0a1628;
+  --navy-900: #0d1f35;
+  --navy-800: #112540;
+  --gold-400: #d4a843;
+  --gold-300: #f0d080;
+  --chalk: #e8e8e0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--navy-950);
+  color: var(--chalk);
+  font-family: 'DM Sans', sans-serif;
+  overflow-x: hidden;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--navy-950); }
+::-webkit-scrollbar-thumb { background: var(--gold-400); border-radius: 3px; }
+
+/* Math grid background utility */
+.math-grid {
+  background-image:
+    linear-gradient(rgba(212, 168, 67, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(212, 168, 67, 0.04) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+/* Chalk text effect */
+.chalk-text {
+  text-shadow:
+    0 0 8px rgba(232, 232, 224, 0.3),
+    1px 1px 2px rgba(0,0,0,0.5);
+  letter-spacing: 0.02em;
+}
+
+/* Gold shimmer text */
+.gold-shimmer {
+  background: linear-gradient(
+    90deg,
+    #c49a35 0%,
+    #f0d080 25%,
+    #d4a843 50%,
+    #f0d080 75%,
+    #c49a35 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shimmer 3s linear infinite;
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+/* Border glow */
+.border-glow {
+  box-shadow: 0 0 0 1px rgba(212, 168, 67, 0.3), 0 0 20px rgba(212, 168, 67, 0.1);
+}
+
+.border-glow:hover {
+  box-shadow: 0 0 0 1px rgba(212, 168, 67, 0.6), 0 0 30px rgba(212, 168, 67, 0.2);
+}
+
+/* Equation floating */
+.eq-float {
+  opacity: 0.06;
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  user-select: none;
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+/* Card hover */
+.card-hover {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.4), 0 0 30px rgba(212,168,67,0.1);
+}
+
+/* Fade in animation */
+.animate-fadeUp {
+  animation: fadeUp 0.7s ease forwards;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Stagger delays */
+.delay-100 { animation-delay: 0.1s; }
+.delay-200 { animation-delay: 0.2s; }
+.delay-300 { animation-delay: 0.3s; }
+.delay-400 { animation-delay: 0.4s; }
+.delay-500 { animation-delay: 0.5s; }
+.delay-600 { animation-delay: 0.6s; }
+.delay-700 { animation-delay: 0.7s; }
+
+/* Section divider */
+.section-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(212,168,67,0.5), transparent);
+}
+
+/* Circular logo ring animation */
+@keyframes rotateSlow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.rotate-slow { animation: rotateSlow 30s linear infinite; }
+
+/* Nav active underline */
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--gold-400);
+  transition: width 0.3s ease;
+}
+.nav-link:hover::after,
+.nav-link.active::after {
+  width: 100%;
+}
+
+/* Pi watermark */
+.pi-watermark {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 40vw;
+  line-height: 1;
+  color: rgba(212,168,67,0.02);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  user-select: none;
+  pointer-events: none;
+}
