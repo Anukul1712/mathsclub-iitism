@@ -19,9 +19,10 @@ const MEMBERS = [
   { name: "Subrat Panda", year: "2nd Year, B.Tech (Electrical)", image: "/team/photos/subrat.jpeg", quote: "The power to constrain an adversary may depend on the power to bind oneself." },
   { name: "Saranshh Rastogi", year: "2nd Year, B.Tech (Electrical)", image: "/team/photos/saranshh.png", quote: "Equations are poetry." },
   { name: "Aarya Muniyavula", year: "2nd Year, B.Tech (Mechanical)", image: "/team/photos/aarya.png", quote: "Solving puzzles." },
-  { name: "Ansh Mathur", year: "2nd Year, B.Tech (Mechanical)", image: "/team/photos/ansh.png", quote: "I love calculus." },
+  { name: "Ansh Mathur", year: "2nd Year, B.Tech (Mechanical)", image: "/team/photos/ansh.jpeg", quote: "Everything is a risk. Not doing anything is also a risk." },
   { name: "Yash Jha", year: "2nd Year, B.Tech (Mathematics and Computing)", image: "/team/photos/yash.png", quote: "Engineering through math." },
-  { name: "Anukul Tiwari", year: "2nd Year, B.Tech (Environmental)", image: "/team/photos/anukul.jpeg", quote: "Until I get there I won't give up." }
+  { name: "Anukul Tiwari", year: "2nd Year, B.Tech (Environmental)", image: "/team/photos/anukul.jpeg", quote: "Until I get there I won't give up." },
+  { name: "Kiran Pal", year: "2nd Year, B.Tech (Mathematics and Computing)", image: "/team/photos/kiran.jpeg", quote: "Any loop can be shrunk." }
 ];
 
 function Avatar({ name, image, sizeClass = "w-14 h-14", textClass = "text-lg" }: { name: string, image?: string, sizeClass?: string, textClass?: string }) {
