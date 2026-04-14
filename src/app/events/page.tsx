@@ -7,7 +7,7 @@ const ALL_EVENTS = [
     title: "Club Induction",
     desc: "Introduction to the club, its activities, and how to get involved.",
     tag: "Workshop",
-    status: "upcoming",
+    status: "past",
     venue: "NLHC G-8",
     time: "07:00 PM – 07:30 PM",
   },
@@ -16,7 +16,7 @@ const ALL_EVENTS = [
     title: "Integration Bee 2026",
     desc: "Integration Bee Competition.",
     tag: "Competition",
-    status: "upcoming",
+    status: "past",
     venue: "NLHC G-8",
     time: "07:00 PM – 09:00 PM",
   }
