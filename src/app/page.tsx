@@ -42,20 +42,7 @@ const QUOTES = [
   },
 ];
 
-const UPCOMING = [
-  {
-    date: "APR 09",
-    title: "Club Induction",
-    desc: "Introduction to the club, its activities, and how to get involved.",
-    tag: "Workshop",
-  },
-  {
-    date: "APR 09-10",
-    title: "Integration Bee 2026",
-    desc: "Integration Bee Competition.",
-    tag: "Competition",
-  },
-];
+const UPCOMING: Array<{ date: string; title: string; desc: string; tag: string }> = [];
 
 export default function HomePage() {
   const [quoteIdx, setQuoteIdx] = useState(0);
@@ -294,29 +281,37 @@ export default function HomePage() {
             </h2>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-6">
-            {UPCOMING.map((ev, i) => (
-              <div
-                key={i}
-                className="border border-[#d4a843]/15 bg-[#0d1f35]/50 p-7 card-hover border-glow rounded-sm"
-              >
-                <div className="flex items-start justify-between mb-4">
-                  <div className="font-mono text-[#d4a843] text-sm font-semibold tracking-widest">
-                    {ev.date}
+          {UPCOMING.length > 0 ? (
+            <div className="grid md:grid-cols-3 gap-6">
+              {UPCOMING.map((ev, i) => (
+                <div
+                  key={i}
+                  className="border border-[#d4a843]/15 bg-[#0d1f35]/50 p-7 card-hover border-glow rounded-sm"
+                >
+                  <div className="flex items-start justify-between mb-4">
+                    <div className="font-mono text-[#d4a843] text-sm font-semibold tracking-widest">
+                      {ev.date}
+                    </div>
+                    <span className="text-[10px] font-sans font-semibold tracking-widest uppercase text-[#d4a843]/50 border border-[#d4a843]/30 px-2 py-0.5 rounded-sm">
+                      {ev.tag}
+                    </span>
                   </div>
-                  <span className="text-[10px] font-sans font-semibold tracking-widest uppercase text-[#d4a843]/50 border border-[#d4a843]/30 px-2 py-0.5 rounded-sm">
-                    {ev.tag}
-                  </span>
+                  <h3 className="font-serif text-xl text-[#e8e8e0] font-semibold mb-3">
+                    {ev.title}
+                  </h3>
+                  <p className="font-sans text-sm text-[#e8e8e0]/50 leading-relaxed">
+                    {ev.desc}
+                  </p>
                 </div>
-                <h3 className="font-serif text-xl text-[#e8e8e0] font-semibold mb-3">
-                  {ev.title}
-                </h3>
-                <p className="font-sans text-sm text-[#e8e8e0]/50 leading-relaxed">
-                  {ev.desc}
-                </p>
-              </div>
-            ))}
-          </div>
+              ))}
+            </div>
+          ) : (
+            <div className="text-center py-16 border border-[#d4a843]/10 bg-[#0d1f35]/30 rounded-sm">
+              <p className="font-sans text-[#e8e8e0]/40 tracking-widest uppercase text-sm">
+                No events for now. Check back later!
+              </p>
+            </div>
+          )}
 
           <div className="text-center mt-10">
             <Link
