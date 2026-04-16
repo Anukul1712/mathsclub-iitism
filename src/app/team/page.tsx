@@ -17,12 +17,14 @@ const CORE = [
 
 const MEMBERS = [
   { name: "Subrat Panda", year: "2nd Year, B.Tech (Electrical)", image: "/team/photos/subrat.jpeg", quote: "The power to constrain an adversary may depend on the power to bind oneself." },
-  { name: "Saranshh Rastogi", year: "2nd Year, B.Tech (Electrical)", image: "/team/photos/saranshh.png", quote: "Equations are poetry." },
-  { name: "Aarya Muniyavula", year: "2nd Year, B.Tech (Mechanical)", image: "/team/photos/aarya.png", quote: "Solving puzzles." },
+  { name: "Saranshh Rastogi", year: "2nd Year, B.Tech (Electrical)", image: "/team/photos/saranshh.jpeg", quote: "Equations are poetry." },
+  { name: "Aarya Muniyavula", year: "2nd Year, B.Tech (Mechanical)", image: "/team/photos/aarya.jpeg", quote: "Solving puzzles." },
   { name: "Ansh Mathur", year: "2nd Year, B.Tech (Mechanical)", image: "/team/photos/ansh.jpeg", quote: "Everything is a risk. Not doing anything is also a risk." },
-  { name: "Yash Jha", year: "2nd Year, B.Tech (Mathematics and Computing)", image: "/team/photos/yash.png", quote: "Engineering through math." },
+  { name: "Yash Jha", year: "2nd Year, B.Tech (Mathematics and Computing)", image: "/team/photos/yash.jpeg", quote: "It is known; or is it?" },
   { name: "Anukul Tiwari", year: "2nd Year, B.Tech (Environmental)", image: "/team/photos/anukul.jpeg", quote: "Until I get there I won't give up." },
-  { name: "Kiran Pal", year: "2nd Year, B.Tech (Mathematics and Computing)", image: "/team/photos/kiran.jpeg", quote: "Any loop can be shrunk." }
+  { name: "Kiran Pal", year: "2nd Year, B.Tech (Mathematics and Computing)", image: "/team/photos/kiran.jpeg", quote: "Any loop can be shrunk." },
+  { name: "Sreenandan Shashidharan", year: "2nd Year, B.Tech (Computer Science and Engineering)", image: "/team/photos/sreenandan.jpeg", quote: "I like Maths." },
+  { name: "Keshav Kumar", year: "2nd Year, B.Tech (Chemical Engineering)", image: "/team/photos/keshav.jpeg", quote: "2 dimensional being." }
 ];
 
 function Avatar({ name, image, sizeClass = "w-14 h-14", textClass = "text-lg" }: { name: string, image?: string, sizeClass?: string, textClass?: string }) {
