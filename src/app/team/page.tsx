@@ -18,7 +18,7 @@ const CORE = [
 const MEMBERS = [
   { name: "Subrat Panda", year: "2nd Year, B.Tech (Electrical)", image: "/team/photos/subrat.jpeg", quote: "The power to constrain an adversary may depend on the power to bind oneself." },
   { name: "Saranshh Rastogi", year: "2nd Year, B.Tech (Electrical)", image: "/team/photos/saranshh.jpeg", quote: "Equations are poetry." },
-  { name: "Aarya Muniyavula", year: "2nd Year, B.Tech (Mechanical)", image: "/team/photos/aarya.jpeg", quote: "Solving puzzles." },
+  { name: "Aarya Muniyavula", year: "2nd Year, B.Tech (Mechanical)", image: "/team/photos/aarya.jpeg", quote: "In the Bleak Midwinter." },
   { name: "Ansh Mathur", year: "2nd Year, B.Tech (Mechanical)", image: "/team/photos/ansh.jpeg", quote: "Everything is a risk. Not doing anything is also a risk." },
   { name: "Yash Jha", year: "2nd Year, B.Tech (Mathematics and Computing)", image: "/team/photos/yash.jpeg", quote: "It is known; or is it?" },
   { name: "Anukul Tiwari", year: "2nd Year, B.Tech (Environmental)", image: "/team/photos/anukul.jpeg", quote: "Until I get there I won't give up." },
