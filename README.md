@@ -45,6 +45,7 @@ mathclub/
 | `/team` | Faculty advisors, core committee, general members |
 | `/resources` | Recommended books, olympiad papers, online links |
 | `/contact` | Contact form, office info, FAQ |
+| `/admin` | Password-protected event and team manager |
 
 ---
 
@@ -134,26 +135,11 @@ Your site will be live at: `https://your-project-name.vercel.app`
 
 ---
 
-## ✏️ Customising Content
+## ✏️ Managing Events and Members
 
-All content is in plain TypeScript arrays inside each page file — no database needed.
+Events, team members, resources, contact details, FAQs, and daily questions are managed from `/admin`; no code editing is needed. Administrators can add, edit, and delete records and upload member photos. Event status changes automatically between **Upcoming**, **Happening now**, and **Done** from its start and end time. The Question of the Day is display-only and never accepts solutions.
 
-### Updating Events
-Edit `/src/app/events/page.tsx` → find the `ALL_EVENTS` array and add/edit objects:
-```ts
-{
-  date: "Jun 5, 2025",
-  title: "My New Event",
-  desc: "Event description here.",
-  tag: "Workshop",         // Competition | Workshop | Lecture | Cultural
-  status: "upcoming",     // upcoming | past
-  venue: "Seminar Hall",
-  time: "4:00 PM",
-}
-```
-
-### Updating Team
-Edit `/src/app/team/page.tsx` → update `FACULTY`, `CORE`, and `MEMBERS` arrays.
+The existing site content is used as a read-only fallback until the database is connected. Follow [SETUP.md](./SETUP.md) for the one-time Supabase and Vercel configuration.
 
 ### Updating Resources
 Edit `/src/app/resources/page.tsx` → update `BOOKS`, `LINKS`, and `OLYMPIAD` arrays.

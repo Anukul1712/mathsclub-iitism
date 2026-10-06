@@ -2,6 +2,8 @@
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import type { EventRecord, QotdRecord } from "@/lib/content-types";
+import { formatEventDate, getEventStatus } from "@/lib/content-types";
 
 const FLOATING_EQUATIONS = [
   "∫₀^∞ e⁻ˣ² dx = √π/2",
@@ -42,11 +44,28 @@ const QUOTES = [
   },
 ];
 
-const UPCOMING: Array<{ date: string; title: string; desc: string; tag: string }> = [];
-
 export default function HomePage() {
   const [quoteIdx, setQuoteIdx] = useState(0);
+  const [upcoming, setUpcoming] = useState<EventRecord[]>([]);
+  const [qotd, setQotd] = useState<QotdRecord | null>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
+
+  useEffect(() => {
+    fetch("/api/events")
+      .then((response) => response.json())
+      .then((data) => setUpcoming((data.items || []).filter((event: EventRecord) => getEventStatus(event) !== "done").slice(0, 3)))
+      .catch(() => setUpcoming([]));
+  }, []);
+
+  useEffect(() => {
+    const parts = new Intl.DateTimeFormat("en-GB", { timeZone: "Asia/Kolkata", year: "numeric", month: "2-digit", day: "2-digit" }).formatToParts(new Date());
+    const get = (type: string) => parts.find((part) => part.type === type)?.value;
+    const today = `${get("year")}-${get("month")}-${get("day")}`;
+    fetch("/api/qotd")
+      .then((response) => response.json())
+      .then((data) => setQotd((data.items || []).find((item: QotdRecord) => item.display_date === today) || null))
+      .catch(() => setQotd(null));
+  }, []);
 
   // Rotating quotes
   useEffect(() => {
@@ -216,6 +235,20 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* ─── QUESTION OF THE DAY ─── */}
+      {qotd && <section className="py-20 px-6 bg-[#080f1e] relative overflow-hidden">
+        <div className="absolute inset-0 math-grid opacity-30" />
+        <div className="relative max-w-4xl mx-auto border border-[#d4a843]/25 bg-[#0d1f35]/70 p-8 md:p-12 border-glow">
+          <div className="flex flex-wrap gap-3 justify-between items-center mb-7">
+            <p className="font-mono text-[#d4a843] text-xs tracking-[0.3em] uppercase">Question of the Day</p>
+            <div className="flex gap-2">{qotd.topic && <span className="border border-[#d4a843]/25 px-2 py-1 text-[10px] uppercase tracking-widest text-[#d4a843]/70">{qotd.topic}</span>}{qotd.difficulty && <span className="border border-[#e8e8e0]/15 px-2 py-1 text-[10px] uppercase tracking-widest text-[#e8e8e0]/45">{qotd.difficulty}</span>}</div>
+          </div>
+          <p className="font-display text-2xl md:text-4xl text-[#e8e8e0] leading-relaxed whitespace-pre-line">{qotd.question}</p>
+          {qotd.note && <p className="mt-6 pt-5 border-t border-[#d4a843]/10 text-sm italic text-[#e8e8e0]/45">{qotd.note}</p>}
+          <p className="mt-7 font-mono text-[10px] tracking-widest uppercase text-[#e8e8e0]/25">Think it through — solutions are not collected on this website.</p>
+        </div>
+      </section>}
+
       {/* ─── ABOUT TEASER ─── */}
       <section className="relative py-28 px-6 overflow-hidden">
         <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-16 items-center">
@@ -281,26 +314,26 @@ export default function HomePage() {
             </h2>
           </div>
 
-          {UPCOMING.length > 0 ? (
+          {upcoming.length > 0 ? (
             <div className="grid md:grid-cols-3 gap-6">
-              {UPCOMING.map((ev, i) => (
+              {upcoming.map((ev) => (
                 <div
-                  key={i}
+                  key={ev.id}
                   className="border border-[#d4a843]/15 bg-[#0d1f35]/50 p-7 card-hover border-glow rounded-sm"
                 >
                   <div className="flex items-start justify-between mb-4">
                     <div className="font-mono text-[#d4a843] text-sm font-semibold tracking-widest">
-                      {ev.date}
+                      {formatEventDate(ev).date}
                     </div>
                     <span className="text-[10px] font-sans font-semibold tracking-widest uppercase text-[#d4a843]/50 border border-[#d4a843]/30 px-2 py-0.5 rounded-sm">
-                      {ev.tag}
+                      {ev.category}
                     </span>
                   </div>
                   <h3 className="font-serif text-xl text-[#e8e8e0] font-semibold mb-3">
                     {ev.title}
                   </h3>
                   <p className="font-sans text-sm text-[#e8e8e0]/50 leading-relaxed">
-                    {ev.desc}
+                    {ev.description}
                   </p>
                 </div>
               ))}

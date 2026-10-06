@@ -98,7 +98,7 @@ export default function Footer() {
             © {new Date().getFullYear()} Mathematics Club, IIT(ISM) Dhanbad. All rights reserved.
           </p>
           <p className="font-mono text-xs text-[#d4a843]/30">
-            π ≈ 3.14159265358979…
+            <Link href="/admin" className="hover:text-[#d4a843] transition-colors">Manage site</Link>
           </p>
         </div>
       </div>
